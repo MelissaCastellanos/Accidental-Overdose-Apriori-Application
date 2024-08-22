@@ -1,4 +1,4 @@
-# Rule-Mining-Apriori-Algorithm
+# Accidental Overdose Drug Relationships
 In the following project, the Apriori algorithm was used to determine the association rules in an accidental overdose dataset. Finding these association rules helps define the relationship between items in a dataset, in this case, different drugs involved in an accidental overdose. 
 
 The Apriori algorithm first identifies frequent itemsets which are combinations of drugs that appear together in overdose cases over a specific threshold. It begins by scanning the dataset to find individual drugs (1-itemsets) that meet the minimum support threshold. Then, it iteratively combines these frequent 1-itemsets to form larger itemsets, ensuring that only those itemsets that meet the support threshold are considered. This continues until no itemsets can be found. 
