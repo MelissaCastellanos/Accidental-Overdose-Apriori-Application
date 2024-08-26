@@ -1,7 +1,7 @@
 # Accidental Overdose Drug Relationships
-In the following project, the Apriori algorithm was used to determine the association rules in an accidental overdose dataset. Finding these association rules helps define the relationship between items in a dataset, in this case, different drugs involved in an accidental overdose. 
+In the following project, the Apriori algorithm was used to determine the association rules in an accidental overdose dataset. Finding the association rules of a dataset helps define relationships between items in the dataset, in this case, different drugs involved in an accidental overdose. 
 
-The Apriori algorithm first identifies frequent itemsets which are combinations of drugs that appear together in overdose cases over a specific threshold. It begins by scanning the dataset to find individual drugs (1-itemsets) that meet the minimum support threshold. Then, it iteratively combines these frequent 1-itemsets to form larger itemsets, ensuring that only those itemsets that meet the support threshold are considered. This continues until no itemsets can be found. 
+The Apriori algorithm first identifies frequent itemsets. In this case frequent itemsets are combinations of drugs that appear together in overdose cases over a specific threshold. It begins by scanning the dataset to find individual drugs (1-itemsets) that meet the minimum support threshold. Then, it combines these frequent 1-itemsets to form larger itemsets until no itemsets can be found. This ensures that only those itemsets that meet the support threshold are considered.
 
 ![Apriori Flow Example](https://iq.opengenus.org/content/images/2020/01/apriori-example.png)
 
@@ -12,24 +12,18 @@ By analyzing these rules, we can uncover patterns in drug co-occurrence that may
 
 
 ## Conclusions
-### TOP 10 RULES OVERALL
+To select the top overall association rules three measures were considered: support, confidence, and lift. Support was used as a baseline rule for consideration. Only rules having a support value greater than 0.05 were considered significant (i.e. only itemsets that appeared with a frequency of 0.05 were considered "frequent enough" to form an association). This set the stage for evaluating the confidence and lift of each rule. Confidence was used to measure how frequently drugs (itemsets) appeared together. The higher the confidence the more likely a consequent was to occur given the antecedent. For example, Rule 1, with a confidence of 0.6250, indicated fentanyl had a 62.50% chance of appearing if both heroin and cocaine were present. Lift, on the other hand, was used to determine the strength of each rule. A higher lift (>1) indicated a strong positive relationship, while a low lift (<1) indicated a strong negative relationship. For example, Rule 2, with a lift of 1.1388, suggests that the relationship between alcohol, heroin, and cocaine is greater than what we expect from sheer coincidence. In essence, the processes filtered out rules with low support, selected those with high confidence, and ranked the remaining rules based on lift to identify which were more significant. 
+
+### TOP 5 RULES OVERALL
 #| Antecedent             | Consequent | Support | Confidence | Lift   
 -| ---------------------- | ---------- | ------- | ---------- | -----
-11| (Heroin, Alcohol)      | (Fentanyl) | 0.0550  | 0.4667     | 0.8312
-12| (Heroin, Cocaine)      | (Fentanyl) | 0.0733  | 0.6250     | 1.0963
-13| (Acetyl Fentanyl, Alcohol) | (Fentanyl) | 0.0460 | 0.8514     | 1.5115
-14| (Acetyl Fentanyl)      | (Alcohol)  | 0.0460  | 0.5000     | 0.9181
-15| (Acetyl Fentanyl, Cocaine) | (Fentanyl) | 0.0388 | 0.7250     | 1.2913
-16| (Para-Fluorofentanyl, Alcohol) | (Fentanyl) | 0.0286 | 0.7143 | 1.2781
-17| (Para-Fluorofentanyl, Cocaine) | (Fentanyl) | 0.0352 | 0.6667 | 1.2154
-18| (Alcohol, Heroin)      | (Cocaine)  | 0.0510  | 0.4800     | 1.1388
-19| (Fentanyl, Heroin)     | (Cocaine)  | 0.0531  | 0.4240     | 0.9805
-20| (Cocaine, Fentanyl)    | (Heroin)   | 0.0716  | 0.4650     | 0.9914  
-
-The selection of the best rules was based primarily on their lift, confidence, and support values. I prioritized lift first, as it incorporates both confidence and the overall dataset, making it a more comprehensive measure of rule strength. Thus, I gave lift more weight than confidence and support. For the second criterion, I focused on rules with a confidence value exceeding 0.60. This level of confidence, combined with a high lift, indicated rules that were both accurate individually and within the broader dataset. High confidence and lift together highlighted rules of significant interest. Finally, I considered support, but only rules with support values greater than 0.05 were included. Support was the baseline for rule consideration, setting the stage for evaluating confidence and lift.
+1| (Heroin, Cocaine)      | (Fentanyl) | 0.0733  | 0.6250     | 1.0963
+2| (Alcohol, Heroin)      | (Cocaine)  | 0.0510  | 0.4800     | 1.1388
+3| (Heroin, Alcohol)      | (Fentanyl) | 0.0550  | 0.4667     | 0.8312
+4| (Fentanyl, Heroin)     | (Cocaine)  | 0.0531  | 0.4240     | 0.9805
+5| (Cocaine, Fentanyl)    | (Heroin)   | 0.0716  | 0.4650     | 0.9914  
 
 
- 
 ## Data Information
 **Source:** Allegheny County Fatal Accidental Overdoses [Link to Dataset](https://catalog.data.gov/dataset/allegheny-county-fatal-accidental-overdoses)  
 
